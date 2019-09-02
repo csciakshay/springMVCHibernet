@@ -18,6 +18,7 @@
 </h1>
 
 <c:url var="addAction" value="/person/add" ></c:url>
+<c:url var="findAction" value="/persons/find/${person.name}" ></c:url>
 
 <form:form action="${addAction}" commandName="person">
 <table>
@@ -54,6 +55,16 @@
 			<form:input path="country" />
 		</td>
 	</tr>
+		<tr>
+		<td>
+			<form:label path="address">
+				<spring:message text="Address"/>
+			</form:label>
+		</td>
+		<td>
+			<form:input path="address" />
+		</td>
+	</tr>
 	<tr>
 		<td colspan="2">
 			<c:if test="${!empty person.name}">
@@ -68,6 +79,28 @@
 	</tr>
 </table>	
 </form:form>
+<form:form action="${findAction}" commandName="person" method="get">
+<table>
+	<tr>
+		<td>
+			<form:label path="name">
+				<spring:message text="Name"/>
+			</form:label>
+		</td>
+		<td>
+			<form:input path="name" />
+		</td> 
+	</tr>
+	<tr>
+		<td colspan="2">
+			
+				<input type="submit"
+					value="<spring:message text="Find Person"/>" />
+			
+		</td>
+	</tr>
+</table>
+</form:form>
 <br>
 <h3>Persons List</h3>
 <c:if test="${!empty listPersons}">
@@ -76,6 +109,7 @@
 		<th width="80">Person ID</th>
 		<th width="120">Person Name</th>
 		<th width="120">Person Country</th>
+		<th width="120">Person Address</th>
 		<th width="60">Edit</th>
 		<th width="60">Delete</th>
 	</tr>
@@ -84,6 +118,7 @@
 			<td>${person.id}</td>
 			<td>${person.name}</td>
 			<td>${person.country}</td>
+			<td>${person.address}</td>
 			<td><a href="<c:url value='/edit/${person.id}' />" >Edit</a></td>
 			<td><a href="<c:url value='/remove/${person.id}' />" >Delete</a></td>
 		</tr>

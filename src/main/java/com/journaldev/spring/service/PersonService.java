@@ -11,5 +11,5 @@ public interface PersonService {
 	public List<Person> listPersons();
 	public Person getPersonById(int id);
 	public void removePerson(int id);
-	
+	public List<Person> findPersons(String name);
 }

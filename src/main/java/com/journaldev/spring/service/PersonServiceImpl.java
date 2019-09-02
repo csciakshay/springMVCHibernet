@@ -47,4 +47,8 @@ public class PersonServiceImpl implements PersonService {
 		this.personDAO.removePerson(id);
 	}
 
+	@Transactional
+	public List<Person> findPersons(String name) {
+		return this.personDAO.findPersons(name);
+	}
 }

@@ -25,6 +25,8 @@ public class Person {
 	private String name;
 	
 	private String country;
+	
+	private String address;
 
 	public int getId() {
 		return id;
@@ -50,8 +52,17 @@ public class Person {
 		this.country = country;
 	}
 	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	@Override
 	public String toString(){
-		return "id="+id+", name="+name+", country="+country;
+		return "id="+id+", name="+name+", country="+country+", address="+address;
+		
 	}
 }

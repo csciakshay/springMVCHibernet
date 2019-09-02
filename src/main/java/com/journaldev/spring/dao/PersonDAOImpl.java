@@ -64,4 +64,13 @@ public class PersonDAOImpl implements PersonDAO {
 		logger.info("Person deleted successfully, person details="+p);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Person> findPersons(String name) {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Person> personsList = session.createQuery("from Person where name='"+name+"'").list();
+		for(Person p : personsList){
+			logger.info("Person List::"+p);
+		}
+		return personsList;
+	}
 }

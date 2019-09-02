@@ -60,4 +60,10 @@ public class PersonController {
         return "person";
     }
 	
+    @RequestMapping(value = "/persons/find/{name}", method = RequestMethod.GET)
+	public String findPersons(Model model,@PathVariable("name") String name) {
+		model.addAttribute("person", new Person());
+		model.addAttribute("listPersons", this.personService.findPersons(name));
+		return "person";
+	}
 }
